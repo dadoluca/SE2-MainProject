@@ -27,22 +27,21 @@ To run the project locally, follow these steps:
 ### In server folder
 1. Install the required dependencies with the following command:
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
 2. If this is your first time running the project, initialize the database by executing:
 
-```bash
-node init_db.mjs
-```
+    ```bash
+    node init_db.mjs
+    ```
 
 3. Start the Server
 
-Start the server with:
-```bash
-nodemon server.mjs
-```
+    ```bash
+    nodemon server.mjs
+    ```
 
 
 This will start the project and you can access it in your browser.
