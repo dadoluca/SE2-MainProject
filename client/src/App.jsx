@@ -1,5 +1,5 @@
 import './App.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider, createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
