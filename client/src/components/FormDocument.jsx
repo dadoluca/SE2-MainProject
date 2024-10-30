@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button, Row, Col, Card } from 'react-bootstrap'; 
 
 function DocumentInsert() {
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState('');
     const [stakeholders, setStakeholders] = useState('');
     const [type, setType] = useState('');
@@ -22,7 +25,7 @@ function DocumentInsert() {
         setStakeholdersArray(ev.target.value.split(','));
     }
 
-    const handleSubmit = ()=>{
+    const handleSubmit = async()=>{
         const document = {
             title: title,
             stakeholders: stakeholdersArray,
@@ -33,8 +36,31 @@ function DocumentInsert() {
             pages: pages,
         }
 
-        //add this part with backend API
+        /* TEST ON FAKE DB
+        try {
+            const response = await fetch('http://localhost:3001/documents', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(document),
+            });
+    
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Document added:', result);
+            } else {
+                console.error('Error');
+            }
+        } catch (error) {
+            console.error('Network error: ', error);
+        }*/
+    };   
+
+    const handleReturnHome = () => {
+        navigate('/');
     }
+    
 
     return (
         <>
@@ -132,12 +158,12 @@ function DocumentInsert() {
             <div className="buttons">
                 <Row>
                     <Col>
-                        <Button className="mt-3" type="submit">Add</Button>
+                        <Button className="mt-3" type="submit" onClick={handleSubmit}>Add</Button>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Button className="mt-3" variant="danger">Back</Button>
+                        <Button className="mt-3" variant="danger" onClick={handleReturnHome}>Back</Button>
                     </Col>
                 </Row>
             </div>
@@ -146,4 +172,4 @@ function DocumentInsert() {
   );
 }
 
-export {DocumentInsert};
+export default DocumentInsert;
