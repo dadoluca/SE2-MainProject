@@ -1,10 +1,9 @@
 import React from 'react';
+import MapComponent from '../components/Map';
 
 function HomePage() {
     return (
-        <div className="App">
-            <h1>Kirnua eXplorer</h1>
-        </div>
+        <MapComponent />
     );
 }
 
