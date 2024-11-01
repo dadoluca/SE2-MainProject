@@ -11,14 +11,14 @@ const app = express();
 app.use(express.json());
 
 // Route Imports
-//import documentRoutes from './routes/documentRoutes.mjs';
+import documentRoutes from './routes/documentRoutes.mjs';
 //import resourceRoutes from './routes/resourceRoutes.mjs';
 //import linkRoutes from './routes/linkRoutes.mjs';
 //import geolocationRoutes from './routes/geolocationRoutes.mjs';
 import userRoutes from './routes/userRoutes.mjs';
 
 // Use Routes
-//app.use('/documents', documentRoutes);
+app.use('/documents', documentRoutes);
 //app.use('/resources', resourceRoutes);
 //app.use('/links', linkRoutes);
 //app.use('/geolocations', geolocationRoutes);

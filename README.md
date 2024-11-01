@@ -211,3 +211,13 @@ To manage users effectively, we’ve implemented a set of RESTful API endpoints:
 - **POST /users/reset-password**: Resets the password using a valid token from the forgot-password step.
 - **DELETE /users/:id**: Deletes a user account, accessible to the user or admin roles.
 - **PUT /users/:id/role**: Updates the role of a user, accessible only by admin users.
+
+## Document Management API Endpoints
+
+To manage documents effectively, we’ve implemented a set of RESTful API endpoints:
+
+- **POST /documents**: Creates a new document with details such as title, stakeholders, scale, issuance date, and optional coordinates or area reference.
+- **GET /documents**: Retrieves all documents with optional query filters (e.g., by type, stakeholders) and pagination support.
+- **GET /documents/:id**: Retrieves the details of a specific document by its unique `_id`.
+- **PUT /documents/:id**: Updates an existing document’s details, allowing fields like title, description, and relationships to be modified.
+- **DELETE /documents/:id**: Deletes a specific document by its `_id`, removing it from the database.
