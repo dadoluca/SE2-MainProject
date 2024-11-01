@@ -1,37 +1,22 @@
-import { useRef, useEffect } from "react";
-import leaflet from "leaflet";
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-export default function Map() {
-    const mapContainerRef = useRef(null); //Ref for map container
-    const mapInstanceRef = useRef(null);  //Ref for map instance
+const MapComponent = () => {
+    const position = [67.8558, 20.2253]; //Kiruna coordinates
 
-    //useEffect to initialize and render map
-    useEffect(() => {
-        if (mapInstanceRef.current) {
-            //to amnage map recreation
-            return;
-        }
+    return (
+        <MapContainer center={position} zoom={13} style={{ height: '500px', width: '100%' }}>
+            <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={position}>
+                <Popup>
+                    Ciao! Questa è Roma.
+                </Popup>
+            </Marker>
+        </MapContainer>
+    );
+};
 
-        //Map initialization
-        mapInstanceRef.current = leaflet.map(mapContainerRef.current).setView([67.8558, 20.2253], 13);
-
-        leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(mapInstanceRef.current);
-
-    }, []);
-
-    //useEffect to cleanup map instance
-    /*
-    useEffect(() => {
-        return () => {
-            mapInstanceRef.current.remove();
-        };
-    }, []);
-    */
-
-    //useEffect to place a marker on map
-
-    return <div id="map" ref={mapContainerRef} style={{ height: "50%", width: "50%" }}></div>;
-}
+export default MapComponent;
