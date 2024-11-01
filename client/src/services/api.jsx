@@ -2,7 +2,7 @@ const SERVR_BASE_URL = 'http://localhost:5001';
 const API_BASE_URL = `${SERVR_BASE_URL}/api`; 
 
 const logIn = async (credentials) => {
-    const response = await fetch(SERVER_URL + '/login', {
+    const response = await fetch(API_BASE_URL + '/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,6 +20,15 @@ const logIn = async (credentials) => {
       throw errDetails;
     }
 };
+
+const logOut = async() => {
+  const response = await fetch(API_BASE_URL + '/logout', {
+    method: 'DELETE',
+    credentials: 'include'
+  });
+  if (response.ok)
+    return null;
+}
   
 const getUserInfo = async () => {
     /*const response = await fetch(SERVER_URL + '/api/sessions/current', {
@@ -34,14 +43,7 @@ const getUserInfo = async () => {
    throw new Error('Not authenticated');
 };
   
-const logOut = async() => {
-    const response = await fetch(SERVER_URL + '/logout', {
-      method: 'DELETE',
-      credentials: 'include'
-    });
-    if (response.ok)
-      return null;
-}
+
 
 export default { logIn, logOut, getUserInfo };
 
