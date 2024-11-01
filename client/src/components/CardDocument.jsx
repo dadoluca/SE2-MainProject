@@ -26,7 +26,7 @@ const DetailPlanCard = (props) => {
         </ListGroup>
 
         <Card.Text style={{ marginTop: '20px', fontSize: '14px', color: '#555' }}>
-          <strong>Description:</strong> This is the first of 8 detailed plans located in the old center of Kiruna, aimed at transforming the residential areas into mining industry zones to allow the demolition of buildings. The area includes the town hall, the Ullspiran district, and the A10 highway, and it will be the first to be dismantled. The plan consists, like all detailed plans, of two documents: the area map that regulates it, and a text explaining the reasons that led to the drafting of the plan with these characteristics. The plan gained legal validity in 2012.
+          <strong>Description:</strong> {props.description}
         </Card.Text>
       </Card.Body>
     </Card>
