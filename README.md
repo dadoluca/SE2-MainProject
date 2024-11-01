@@ -221,3 +221,43 @@ To manage documents effectively, we’ve implemented a set of RESTful API endpoi
 - **GET /documents/:id**: Retrieves the details of a specific document by its unique `_id`.
 - **PUT /documents/:id**: Updates an existing document’s details, allowing fields like title, description, and relationships to be modified.
 - **DELETE /documents/:id**: Deletes a specific document by its `_id`, removing it from the database.
+
+## Document Relationship API Endpoints
+
+To manage relationships between documents, we’ve added API endpoints that allow users to create, view, update, and delete relationships:
+
+- **POST /documents/:id/relationships**: Adds a new relationship to a document, linking it to another document and specifying the relationship type.
+- **GET /documents/:id/relationships**: Retrieves all relationships for a specific document, including details of linked documents and relationship types.
+- **PUT /documents/:id/relationships/:relationshipId**: Updates the type of an existing relationship between documents.
+- **DELETE /documents/:id/relationships/:relationshipId**: Deletes a specific relationship from a document by its relationship ID.
+
+## Extended Document Relationship API Endpoints
+
+To enhance document relationship management and analysis, we’ve added extended API endpoints:
+
+- **GET /documents/:id/linked-documents**: Retrieves all documents linked to a specified document, with optional filtering by relationship type.
+- **GET /documents/relationships**: Retrieves all documents that have a specified relationship type, allowing for targeted relationship analysis.
+- **GET /documents/:id/relationship-count**: Returns a count of each relationship type for a specific document, providing a quick summary of relationship distribution.
+- **GET /documents/:id/linked-by-depth**: Retrieves documents linked to a specified document within a certain "depth" or level of separation, supporting multi-level relationship analysis.
+- **POST /documents/:id/bulk-relationships**: Adds multiple relationships to a document in a single request, streamlining the process of linking documents.
+- **GET /documents/:id/relationship-tree**: Retrieves a full hierarchical tree of all documents linked to a specified document, illustrating the entire relationship network.
+
+## Document Tag API Endpoints
+
+To organize and categorize documents more effectively, we’ve added API endpoints that allow users to add tags to documents and retrieve documents by specific tags:
+
+- **POST /documents/:id/tags**: Adds one or more tags to a specified document. Tags are used to categorize documents for easier searching and organization.
+  - **Request Body Example**:
+    ```json
+    {
+      "tags": ["Infrastructure", "Urban Development"]
+    }
+    ```
+  - **Description**: This endpoint adds the specified tags to the document with the given ID. If a tag already exists, it won’t be duplicated.
+
+- **GET /documents/tags/:tag**: Retrieves all documents associated with a specific tag.
+  - **URL Parameter**: `:tag` - The tag used to filter documents (e.g., `Infrastructure`).
+  - **Description**: This endpoint returns a list of all documents that have been tagged with the specified tag, making it easier to locate documents related to particular topics or categories.
+
+These tag APIs enhance document organization by allowing users to tag documents with relevant keywords, which can then be used to search and filter documents efficiently.
+
