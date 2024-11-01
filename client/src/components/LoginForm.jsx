@@ -36,6 +36,10 @@ function LoginForm() {
           <Link className='btn btn-light w-100 border-dark' to={'/'}>Cancel</Link>
           <Button type='submit' className="btn-dark w-100 ms-2">Login</Button>
       </div>
+
+      <p className="mt-3 text-center">
+        Don't have an account? <Link to="/register">Register here</Link>
+      </p>
     </Form>
   )
 };

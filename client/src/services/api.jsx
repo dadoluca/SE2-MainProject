@@ -42,9 +42,27 @@ const getUserInfo = async () => {
     }*/
    throw new Error('Not authenticated');
 };
+
+const register = async (newUser) => {
+  const response = await fetch(API_BASE_URL + '/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newUser),
+  });
+
+  if (response.ok) {
+    const user = await response.json();
+    return user;
+  } else {
+    const errDetails = await response.text();
+    throw errDetails;
+  }
+};
   
 
 
-export default { logIn, logOut, getUserInfo };
+export default { logIn, logOut, getUserInfo, register };
 
   

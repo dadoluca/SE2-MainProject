@@ -7,6 +7,7 @@ import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import  LoginPage  from './pages//LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   const { loggedIn } = useContext(AuthContext);
@@ -22,6 +23,10 @@ function App() {
         {
           path: "/",
           element: <HomePage />
+        },
+        {
+          path: "/register",
+          element: loggedIn ? <Navigate to="/" /> : <RegisterPage />,
         },
         {
           path: "/login",
