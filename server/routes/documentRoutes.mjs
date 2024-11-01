@@ -43,7 +43,7 @@ router.delete('/:id/relationships/:relationshipId', deleteRelationship); // Dele
 //router.get('/:id/relationship-tree', getRelationshipTree);              // Get full relationship tree for a document
 
 // Tag management routes
-router.post('/:id/tags', addTagsToDocument);                           // Add tags to a document
-router.get('/tags/:tag', getDocumentsByTag);                           // Retrieve documents by a specific tag
+//router.post('/:id/tags', addTagsToDocument);                           // Add tags to a document
+//router.get('/tags/:tag', getDocumentsByTag);                           // Retrieve documents by a specific tag
 
 export default router;
