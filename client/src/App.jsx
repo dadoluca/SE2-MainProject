@@ -1,11 +1,15 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider, createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './contexts/AuthContext';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
+import  LoginPage  from './pages//LoginPage';
 
 function App() {
+  const { loggedIn } = useContext(AuthContext);
   const router = createBrowserRouter([
     {
       element: <RootLayout/>,
@@ -18,6 +22,10 @@ function App() {
         {
           path: "/",
           element: <HomePage />
+        },
+        {
+          path: "/login",
+          element: loggedIn ? <Navigate to="/" /> : <LoginPage  />,
         },
         {
           path: "*",
